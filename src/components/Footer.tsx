@@ -24,10 +24,8 @@ const quickLinks = [
 ];
 
 const socials = [
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Facebook, label: "Facebook", href: "#" },
-  { icon: Youtube, label: "YouTube", href: "#" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/aeroview-view-10944b42a/" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/aeroview360.in/" },
 ];
 
 /* ─── Footer ──────────────────────────────────────────────────────────────── */

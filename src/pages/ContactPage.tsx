@@ -16,11 +16,11 @@ import { MessageCircle, Mail, Phone, MapPin, Send, Clock } from "lucide-react";
 
 /* ─── Schema ──────────────────────────────────────────────────────────────*/
 const schema = z.object({
-  name:    z.string().min(2,  "Name must be at least 2 characters"),
-  email:   z.string().email( "Enter a valid email"),
-  phone:   z.string().min(10,"Enter a valid phone number"),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Enter a valid email"),
+  phone: z.string().min(10, "Enter a valid phone number"),
   service: z.string().min(1, "Please select a service"),
-  message: z.string().min(10,"Tell us more about your project"),
+  message: z.string().min(10, "Tell us more about your project"),
 });
 type FormData = z.infer<typeof schema>;
 
@@ -65,10 +65,10 @@ function PageHeader() {
 
 /* ─── Contact details ────────────────────────────────────────────────────*/
 const contactInfo = [
-  { icon: Phone,  label: "Phone",    value: "+91 98765 43210",      sub: "Mon – Sat, 9am – 7pm" },
-  { icon: Mail,   label: "Email",    value: "info@aeroview360.in",  sub: "Response within 2 hours" },
-  { icon: MapPin, label: "Location", value: "Pune, Maharashtra",    sub: "India" },
-  { icon: Clock,  label: "Turnaround", value: "24–48 Hours",        sub: "Proposal delivery" },
+  { icon: Phone, label: "Phone", value: "+91 90224 34694", sub: "Mon – Sat, 9am – 7pm" },
+  { icon: Mail, label: "Email", value: "aeroview360world@gmail.com", sub: "Response within 2 hours" },
+  { icon: MapPin, label: "Location", value: "Pune, Maharashtra", sub: "India" },
+  { icon: Clock, label: "Turnaround", value: "24–48 Hours", sub: "Proposal delivery" },
 ];
 
 /* ─── Contact page body ──────────────────────────────────────────────────*/
@@ -81,7 +81,7 @@ function ContactBody() {
     defaultValues: { name: "", email: "", phone: "", service: "", message: "" },
   });
 
-  function onSubmit(_data: FormData) {}
+  function onSubmit(_data: FormData) { }
 
   return (
     <section ref={ref} className="py-20 bg-background relative overflow-hidden">
@@ -116,7 +116,7 @@ function ContactBody() {
 
             {/* WhatsApp */}
             <motion.a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/919022434694"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 12 }}
