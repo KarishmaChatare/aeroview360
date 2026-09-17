@@ -231,6 +231,17 @@ export default function Hero() {
       onMouseMove={handleMouseMove}
       data-testid="section-hero"
     >
+      {/* Hero Video Background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        src="/hero-video.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+      {/* Dark Overlay for Text Visibility */}
+      <div className="absolute inset-0 bg-black/50 z-10 pointer-events-none" />
 
       {/* ───────── Background Glow ───────── */}
 
@@ -407,7 +418,7 @@ export default function Hero() {
                         ${index ===
                           WORDS.length - 1
                           ? "text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary"
-                          : "text-white"
+                          : "text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
                         }
                       `}
                     >
