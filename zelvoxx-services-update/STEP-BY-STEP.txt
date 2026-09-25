@@ -1,0 +1,11 @@
+ZELVOXX SERVICES UPDATE
+
+1. Open your current Zelvoxx project folder.
+2. Keep the existing project as a backup; do not delete it.
+3. Open this ZIP and extract the `src` folder and `public` folder into the ROOT of the Zelvoxx project folder.
+4. When Windows asks whether to replace `src/pages/ServicesPage.tsx`, choose REPLACE.
+5. The new images are under `public/images/services/3d-modelling`, `construction-monitoring`, and `land-survey`. Existing GIS, Drone Survey and 360 Virtual Tour data are not replaced.
+6. Do NOT replace HomePage or any Hero files.
+7. In Antigravity terminal run: npm run dev
+8. Open the local site and go to Services. Click the cards for 3D Model Overlay, 3D Modelling, Construction Monitoring, GIS Mapping and Land Survey. They should scroll to their new data sections.
+9. Drone Survey and 360° Virtual Tour are left as they were.

@@ -6,11 +6,123 @@ import {
     CheckCircle2,
 } from "lucide-react";
 
+/* =========================================================
+   DRONE SURVEY IMAGE FOLDERS
+   ========================================================= */
+
+const droneSurveyImages = import.meta.glob(
+    "/public/images/services/drone-survey/**/*.{png,jpg,jpeg,webp,JPG,JPEG,PNG,WEBP}",
+    {
+        eager: true,
+        query: "?url",
+        import: "default",
+    }
+) as Record<string, string>;
+
+/* =========================================================
+   GET IMAGES FROM EACH FOLDER
+   ========================================================= */
+
+function getFolderImages(folderName: string) {
+    return Object.entries(droneSurveyImages)
+        .filter(([path]) =>
+            path.includes(`/drone-survey/${folderName}/`)
+        )
+        .map(([, image]) => image);
+}
+
+/* =========================================================
+   GALLERY SECTION
+   ========================================================= */
+
+function SurveyGallery({
+    title,
+    description,
+    images,
+}: {
+    title: string;
+    description: string;
+    images: string[];
+}) {
+    if (images.length === 0) {
+        return null;
+    }
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-20 last:mb-0"
+        >
+            <div className="mb-8">
+                <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">
+                    Survey Data
+                </span>
+
+                <h3 className="text-2xl md:text-4xl font-black mt-3 mb-3">
+                    {title}
+                </h3>
+
+                <p className="text-muted-foreground max-w-3xl leading-relaxed">
+                    {description}
+                </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {images.map((image, index) => (
+                    <motion.div
+                        key={`${image}-${index}`}
+                        initial={{ opacity: 0, scale: 0.96 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            duration: 0.45,
+                            delay: Math.min(index * 0.05, 0.25),
+                        }}
+                        whileHover={{ y: -5 }}
+                        className="group overflow-hidden rounded-2xl border border-border bg-card"
+                    >
+                        <div className="aspect-[4/3] overflow-hidden bg-black/20">
+                            <img
+                                src={image}
+                                alt={`${title} survey output ${index + 1}`}
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                loading="lazy"
+                            />
+                        </div>
+
+                        <div className="p-4">
+                            <p className="text-sm font-medium text-white">
+                                {title} — Output {index + 1}
+                            </p>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
 export default function DroneSurveyPage() {
+
+    const rtkImages = getFolderImages("rtk-drone-survey");
+    const orthomosaicImages = getFolderImages("orthomosaic-map");
+    const dsmImages = getFolderImages("dsm");
+    const dtmImages = getFolderImages("dtm");
+    const surfaceModelImages = getFolderImages("drone-surfacr-model");
+    const terrainModelImages = getFolderImages("digital-terrain-model");
+
     return (
         <main className="min-h-screen bg-background text-white">
 
             {/* ================= HERO ================= */}
+
             <section className="relative overflow-hidden py-24 md:py-32">
 
                 <div className="container mx-auto px-5 md:px-8">
@@ -60,6 +172,7 @@ export default function DroneSurveyPage() {
 
 
             {/* ================= INTRO ================= */}
+
             <section className="py-20">
 
                 <div className="container mx-auto px-5 md:px-8">
@@ -87,7 +200,8 @@ export default function DroneSurveyPage() {
             </section>
 
 
-            {/* ================= EXISTING CONTENT AREA ================= */}
+            {/* ================= SURVEY OUTPUTS ================= */}
+
             <section className="py-20 bg-black/20">
 
                 <div className="container mx-auto px-5 md:px-8">
@@ -108,6 +222,7 @@ export default function DroneSurveyPage() {
                     <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
 
                         {/* RTK */}
+
                         <motion.div
                             whileHover={{ y: -5 }}
                             className="rounded-2xl border border-border bg-card p-7"
@@ -126,6 +241,7 @@ export default function DroneSurveyPage() {
 
 
                         {/* DSM */}
+
                         <motion.div
                             whileHover={{ y: -5 }}
                             className="rounded-2xl border border-border bg-card p-7"
@@ -144,6 +260,7 @@ export default function DroneSurveyPage() {
 
 
                         {/* DTM */}
+
                         <motion.div
                             whileHover={{ y: -5 }}
                             className="rounded-2xl border border-border bg-card p-7"
@@ -162,6 +279,7 @@ export default function DroneSurveyPage() {
 
 
                         {/* MAPPING */}
+
                         <motion.div
                             whileHover={{ y: -5 }}
                             className="rounded-2xl border border-border bg-card p-7"
@@ -185,7 +303,95 @@ export default function DroneSurveyPage() {
             </section>
 
 
+            {/* ================= COMPLETE IMAGE GALLERY ================= */}
+
+            <section className="py-24">
+
+                <div className="container mx-auto px-5 md:px-8">
+
+                    <div className="max-w-6xl mx-auto">
+
+                        <div className="text-center mb-16">
+
+                            <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">
+                                Project Data
+                            </span>
+
+                            <h2 className="text-3xl md:text-5xl font-black mt-4 mb-5">
+                                Drone Survey Data & Outputs
+                            </h2>
+
+                            <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
+                                Explore the aerial survey outputs, mapping products,
+                                surface models and terrain data generated from the
+                                drone survey.
+                            </p>
+
+                        </div>
+
+
+                        {/* RTK DRONE SURVEY */}
+
+                        <SurveyGallery
+                            title="RTK Drone Survey"
+                            description="High-accuracy RTK drone survey data and aerial survey outputs."
+                            images={rtkImages}
+                        />
+
+
+                        {/* ORTHOMOSAIC MAP */}
+
+                        <SurveyGallery
+                            title="Orthomosaic Map"
+                            description="High-resolution orthomosaic mapping outputs generated from aerial imagery."
+                            images={orthomosaicImages}
+                        />
+
+
+                        {/* DRONE SURFACE MODEL */}
+
+                        <SurveyGallery
+                            title="Drone Surface Model"
+                            description="Surface model outputs representing buildings, vegetation and other visible surface features."
+                            images={surfaceModelImages}
+                        />
+
+
+                        {/* DSM */}
+
+                        <SurveyGallery
+                            title="Digital Surface Model (DSM)"
+                            description="Digital Surface Model outputs for elevation and surface analysis."
+                            images={dsmImages}
+                        />
+
+
+                        {/* DIGITAL TERRAIN MODEL */}
+
+                        <SurveyGallery
+                            title="Digital Terrain Model"
+                            description="Terrain modelling outputs used to analyse ground elevation and site characteristics."
+                            images={terrainModelImages}
+                        />
+
+
+                        {/* DTM */}
+
+                        <SurveyGallery
+                            title="Digital Terrain Model (DTM)"
+                            description="DTM outputs representing ground terrain after processing the aerial survey data."
+                            images={dtmImages}
+                        />
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
             {/* ================= FEATURES ================= */}
+
             <section className="py-20">
 
                 <div className="container mx-auto px-5 md:px-8">
@@ -243,6 +449,7 @@ export default function DroneSurveyPage() {
 
 
             {/* ================= CTA ================= */}
+
             <section className="py-24">
 
                 <div className="container mx-auto px-5 md:px-8">

@@ -9,6 +9,12 @@ import ProjectsPage from "./pages/ProjectsPage";
 import VirtualTourPage from "./pages/360VirtualTourPage";
 import DroneSurveyPage from "./pages/DroneSurveyPage";
 
+import ModelOverlayPage from "./pages/3D Model Overlay Page";
+import ModellingPage from "./pages/3D Modelling Page";
+import ConstructionMonitoringPage from "./pages/Construction Monitoring Page";
+import GISMappingPage from "./pages/GIS Mapping Page";
+import LandSurveyPage from "./pages/Land Survey Page";
+
 function NavigationBar() {
   return (
     <header
@@ -115,6 +121,36 @@ function App() {
           <Route
             path="/services/drone-survey"
             component={DroneSurveyPage}
+          />
+
+          {/* 3D MODEL OVERLAY */}
+          <Route
+            path="/services/3d-model-overlay"
+            component={ModelOverlayPage}
+          />
+
+          {/* 3D MODELLING */}
+          <Route
+            path="/services/3d-modelling"
+            component={ModellingPage}
+          />
+
+          {/* CONSTRUCTION MONITORING */}
+          <Route
+            path="/services/construction-monitoring"
+            component={ConstructionMonitoringPage}
+          />
+
+          {/* GIS MAPPING */}
+          <Route
+            path="/services/gis-mapping"
+            component={GISMappingPage}
+          />
+
+          {/* LAND SURVEY */}
+          <Route
+            path="/services/land-survey"
+            component={LandSurveyPage}
           />
 
           {/* 404 */}
