@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -14,7 +14,7 @@ function WhatsAppButton() {
       aria-label="Chat on WhatsApp"
       initial={{ opacity: 0, scale: 0.6, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, delay: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
       whileHover={{ scale: 1.12, y: -3 }}
       whileTap={{ scale: 0.94 }}
       className="fixed bottom-6 right-6 z-[999] flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-[0_4px_24px_rgba(37,211,102,0.45)] hover:shadow-[0_6px_36px_rgba(37,211,102,0.65)] transition-shadow duration-300"
@@ -44,9 +44,9 @@ function ScrollToTop() {
   return null;
 }
 
-const pageVariants = {
+const pageVariants: Variants = {
   initial: { opacity: 0, y: 14 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const } },
   exit:    { opacity: 0, y: -8,  transition: { duration: 0.25, ease: "easeIn" } },
 };
 
