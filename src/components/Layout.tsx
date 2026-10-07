@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "wouter";
-import { AnimatePresence, motion, type Variants } from "framer-motion";
+
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import WhatsAppButton from "./WhatsAppButton.tsx";
 
 /* ─── Floating WhatsApp button ───────────────────────────────────────────── */
 function WhatsAppButton() {
@@ -38,9 +40,14 @@ function WhatsAppButton() {
 
 function ScrollToTop() {
   const [location] = useLocation();
+
   useEffect(() => {
-    window.scrollTo({ top: 0 });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, [location]);
+
   return null;
 }
 
@@ -51,26 +58,44 @@ const pageVariants: Variants = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
 
   return (
-    <div className="min-h-[100dvh] w-full flex flex-col bg-background overflow-x-hidden">
+    <div className="min-h-[100dvh] w-full flex flex-col bg-background">
+
       <ScrollToTop />
+
       <WhatsAppButton />
+
       <Navbar />
+
       <AnimatePresence mode="wait">
         <motion.main
           key={location}
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
+          initial={{
+            opacity: 0,
+            y: 14,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          exit={{
+            opacity: 0,
+            y: -8,
+          }}
+          transition={{
+            duration: 0.3,
+          }}
           className="flex-1"
         >
           {children}
         </motion.main>
       </AnimatePresence>
+
       <Footer />
+
     </div>
   );
 }
