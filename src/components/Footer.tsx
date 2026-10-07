@@ -48,7 +48,7 @@ export default function Footer() {
                 whileHover={{ scale: 1.02 }}
                 className="flex items-center gap-2.5 mb-6 cursor-pointer w-fit"
               >
-                <div className="w-9 h-9 rounded-lg overflow-hidden border border-primary/20 shadow-[0_0_14px_rgba(27,174,232,0.15)]">
+                <div className="w-9 h-9 rounded-lg overflow-hidden border border-primary/20 shadow-[0_0_14px_rgba(27,174,232,0.15)] bg-white">
                   <img src={logoImg} alt="Aeroview360" className="w-full h-full object-cover" />
                 </div>
                 <span className="text-[1.05rem] font-bold tracking-tight text-white leading-none">

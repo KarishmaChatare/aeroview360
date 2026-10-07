@@ -55,12 +55,8 @@ export default function Navbar() {
             whileTap={{ scale: 0.97 }}
             className="flex items-center gap-2.5 cursor-pointer focus:outline-none"
           >
-            <div className="relative w-9 h-9 rounded-lg overflow-hidden shrink-0 border border-primary/20 shadow-[0_0_14px_rgba(27,174,232,0.2)]">
-              <img
-                src={logoImg}
-                alt="Aeroview360"
-                className="w-full h-full object-cover"
-              />
+            <div className="relative w-9 h-9 rounded-lg overflow-hidden shrink-0 border border-primary/20 shadow-[0_0_14px_rgba(27,174,232,0.2)] bg-white">
+              <img src={logoImg} alt="Aeroview360" className="w-full h-full object-cover" />
             </div>
 
             <span className="text-[1.05rem] font-bold tracking-tight text-white leading-none">

@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 
 /* ─────────────────────────────────────────────
    Subtle Particle Background
@@ -577,10 +578,7 @@ export default function Hero() {
 
           {/* Primary CTA */}
 
-          <Button
-            size="lg"
-            onClick={() => scrollTo("contact")}
-            className="
+          <Button asChild size="lg" className="
               h-[52px]
               w-full
               sm:w-auto
@@ -601,10 +599,11 @@ export default function Hero() {
             "
             data-testid="button-hero-quote"
           >
-            Request a Quote
+            <Link href="/contact">
+              Request a Quote
 
-            <ArrowRight
-              className="
+              <ArrowRight
+                className="
                 ml-2
                 h-4
                 w-4
@@ -612,7 +611,8 @@ export default function Hero() {
                 duration-300
                 group-hover:translate-x-1
               "
-            />
+              />
+            </Link>
           </Button>
 
           {/* Secondary CTA */}
