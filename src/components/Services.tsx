@@ -84,6 +84,8 @@ const services = [
   },
 ];
 
+
+
 /* ─── Magnetic tilt card ──────────────────────────────────────────────── */
 function ServiceCard({
   service,
