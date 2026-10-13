@@ -38,7 +38,7 @@ function NavigationBar() {
           >
             <div className="w-9 h-9 rounded-lg overflow-hidden border border-cyan-400/30">
               <img
-                src="/images/aeroview360-logo.png"
+                src="/images/logo.jpeg"
                 alt="Aeroview360"
                 className="w-full h-full object-cover"
               />

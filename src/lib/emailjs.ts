@@ -14,33 +14,27 @@ export interface EmailSendResult {
   message?: string;
 }
 
-// Config loaded from Vite environment variables
+// EmailJS credentials provided by HR
 export const EMAILJS_CONFIG = {
-  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "",
-  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "",
-  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "",
+  serviceId: "service_n5vv6dd",
+  templateId: "template_ks19t8q",
+  publicKey: "YMpfZl_kwWXCXo3l8",
 };
 
 export function isEmailJSConfigured(): boolean {
   const { serviceId, templateId, publicKey } = EMAILJS_CONFIG;
-  return (
-    Boolean(serviceId) &&
-    Boolean(templateId) &&
-    Boolean(publicKey) &&
-    serviceId !== "your_service_id_here" &&
-    templateId !== "your_template_id_here" &&
-    publicKey !== "your_public_key_here"
-  );
+
+  return Boolean(serviceId && templateId && publicKey);
 }
 
-/** Sends a contact quote request using EmailJS. */
-export async function sendContactEmail(data: ContactFormData): Promise<EmailSendResult> {
+/** Sends a contact request using EmailJS. */
+export async function sendContactEmail(
+  data: ContactFormData
+): Promise<EmailSendResult> {
   const { serviceId, templateId, publicKey } = EMAILJS_CONFIG;
 
   if (!isEmailJSConfigured()) {
-    throw new Error(
-      "EmailJS is not configured. Add VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY to .env."
-    );
+    throw new Error("EmailJS is not configured.");
   }
 
   const templateParams = {
@@ -51,7 +45,9 @@ export async function sendContactEmail(data: ContactFormData): Promise<EmailSend
     message: data.message,
     to_name: "Aeroview360 Team",
     to_email: "aeroview360world@gmail.com",
-    submission_date: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+    submission_date: new Date().toLocaleString("en-IN", {
+      timeZone: "Asia/Kolkata",
+    }),
   };
 
   try {
@@ -64,13 +60,18 @@ export async function sendContactEmail(data: ContactFormData): Promise<EmailSend
 
     if (response.status === 200) {
       return { success: true };
-    } else {
-      throw new Error(`EmailJS responded with status ${response.status}: ${response.text}`);
     }
+
+    throw new Error(
+      `EmailJS responded with status ${response.status}: ${response.text}`
+    );
   } catch (error: any) {
     console.error("[EmailJS Error]:", error);
+
     throw new Error(
-      error?.text || error?.message || "Failed to send message. Please try again or reach out directly on WhatsApp."
+      error?.text ||
+      error?.message ||
+      "Failed to send message. Please try again."
     );
   }
 }
