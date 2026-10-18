@@ -381,6 +381,49 @@ export default function VirtualTourPage() {
           CTA
       ───────────────────────────────────────── */}
 
+            {/* FLY-ESTATE VIRTUAL TOUR */}
+
+            <section className="py-20 bg-[#07111F]">
+                <div className="container mx-auto px-5 md:px-8">
+
+                    <div className="text-center mb-10">
+                        <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">
+                            Live Virtual Experience
+                        </span>
+
+                        <h2 className="text-3xl md:text-5xl font-black text-white mt-4 mb-5">
+                            Explore Our Virtual Tour
+                        </h2>
+
+                        <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+                            Experience our interactive FLY-ESTATE virtual tour.
+                            Explore the complete experience below.
+                        </p>
+                    </div>
+
+                    <div className="w-full overflow-hidden rounded-2xl border border-[#22D3EE]/25">
+                        <iframe
+                            src="https://aeroview360tour.github.io/FLY-ESTATE/"
+                            title="FLY-ESTATE Virtual Tour"
+                            className="w-full h-[600px] md:h-[750px] border-0"
+                            allowFullScreen
+                            loading="lazy"
+                        />
+                    </div>
+
+                    <div className="text-center mt-6">
+                        <a
+                            href="https://aeroview360tour.github.io/FLY-ESTATE/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground"
+                        >
+                            Open Full Virtual Tour ↗
+                        </a>
+                    </div>
+
+                </div>
+            </section>
             <section className="py-24 relative overflow-hidden">
 
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,rgba(34,211,238,0.08)_0%,transparent_70%)] pointer-events-none" />
