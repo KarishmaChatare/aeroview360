@@ -79,6 +79,39 @@ export default function HomePage() {
       <Industries />
       <WhyUs />
       <CTASection />
+      {/* FLOATING CLIENT PORTAL — HOMEPAGE ONLY */}
+      <motion.a
+        href="https://clientportal.aeroview360.world"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open Client Portal"
+        whileHover={{ scale: 1.04 }}
+        whileTap={{ scale: 0.97 }}
+        className="fixed bottom-6 right-5 z-40 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-[#0B1426] px-5 py-3.5 text-sm font-semibold text-white shadow-[0_0_25px_rgba(34,211,238,0.2)] transition-colors hover:border-primary hover:bg-[#12243A] sm:bottom-8 sm:right-8"
+      >
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="19"
+            height="19"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="3" />
+            <path d="M9 3v18" />
+            <path d="M14 8h3" />
+            <path d="M14 12h3" />
+            <path d="M14 16h3" />
+          </svg>
+        </span>
+        <span>Client Portal:- Track your project</span>
+        <ArrowRight className="h-4 w-4 text-primary" />
+      </motion.a>
     </>
   );
 }
